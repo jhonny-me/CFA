@@ -8,13 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		B26E166B1D8BA3E8001FE248 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E166A1D8BA3E8001FE248 /* AppDelegate.swift */; };
-		B26E166D1D8BA3E8001FE248 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E166C1D8BA3E8001FE248 /* FirstViewController.swift */; };
-		B26E166F1D8BA3E8001FE248 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E166E1D8BA3E8001FE248 /* SecondViewController.swift */; };
+		B26E166D1D8BA3E8001FE248 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E166C1D8BA3E8001FE248 /* ScheduleViewController.swift */; };
+		B26E166F1D8BA3E8001FE248 /* MapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E166E1D8BA3E8001FE248 /* MapsViewController.swift */; };
 		B26E16721D8BA3E8001FE248 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B26E16701D8BA3E8001FE248 /* Main.storyboard */; };
 		B26E16741D8BA3E8001FE248 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B26E16731D8BA3E8001FE248 /* Assets.xcassets */; };
 		B26E16771D8BA3E8001FE248 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B26E16751D8BA3E8001FE248 /* LaunchScreen.storyboard */; };
 		B26E16821D8BA3E8001FE248 /* CFATests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E16811D8BA3E8001FE248 /* CFATests.swift */; };
 		B26E168D1D8BA3E8001FE248 /* CFAUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E168C1D8BA3E8001FE248 /* CFAUITests.swift */; };
+		B2FE01CF1D8BDF250019013B /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FE01CE1D8BDF250019013B /* NewsViewController.swift */; };
+		B2FE01D01D8BDF250019013B /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FE01CE1D8BDF250019013B /* NewsViewController.swift */; };
+		B2FE01D11D8BDF250019013B /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FE01CE1D8BDF250019013B /* NewsViewController.swift */; };
+		B2FE01D31D8BDF3A0019013B /* VideosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FE01D21D8BDF3A0019013B /* VideosViewController.swift */; };
+		B2FE01D41D8BDF3A0019013B /* VideosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FE01D21D8BDF3A0019013B /* VideosViewController.swift */; };
+		B2FE01D51D8BDF3A0019013B /* VideosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FE01D21D8BDF3A0019013B /* VideosViewController.swift */; };
+		B2FE01D71D8C01F10019013B /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FE01D61D8C01F10019013B /* Config.swift */; };
+		B2FE01D81D8C01F10019013B /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FE01D61D8C01F10019013B /* Config.swift */; };
+		B2FE01D91D8C01F10019013B /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FE01D61D8C01F10019013B /* Config.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,8 +46,8 @@
 /* Begin PBXFileReference section */
 		B26E16671D8BA3E8001FE248 /* CFA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CFA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B26E166A1D8BA3E8001FE248 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B26E166C1D8BA3E8001FE248 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		B26E166E1D8BA3E8001FE248 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		B26E166C1D8BA3E8001FE248 /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
+		B26E166E1D8BA3E8001FE248 /* MapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsViewController.swift; sourceTree = "<group>"; };
 		B26E16711D8BA3E8001FE248 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B26E16731D8BA3E8001FE248 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B26E16761D8BA3E8001FE248 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +58,9 @@
 		B26E16881D8BA3E8001FE248 /* CFAUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CFAUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B26E168C1D8BA3E8001FE248 /* CFAUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFAUITests.swift; sourceTree = "<group>"; };
 		B26E168E1D8BA3E8001FE248 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B2FE01CE1D8BDF250019013B /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		B2FE01D21D8BDF3A0019013B /* VideosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosViewController.swift; sourceTree = "<group>"; };
+		B2FE01D61D8C01F10019013B /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,12 +112,15 @@
 			isa = PBXGroup;
 			children = (
 				B26E166A1D8BA3E8001FE248 /* AppDelegate.swift */,
-				B26E166C1D8BA3E8001FE248 /* FirstViewController.swift */,
-				B26E166E1D8BA3E8001FE248 /* SecondViewController.swift */,
+				B26E166C1D8BA3E8001FE248 /* ScheduleViewController.swift */,
+				B26E166E1D8BA3E8001FE248 /* MapsViewController.swift */,
+				B2FE01CE1D8BDF250019013B /* NewsViewController.swift */,
+				B2FE01D21D8BDF3A0019013B /* VideosViewController.swift */,
 				B26E16701D8BA3E8001FE248 /* Main.storyboard */,
 				B26E16731D8BA3E8001FE248 /* Assets.xcassets */,
 				B26E16751D8BA3E8001FE248 /* LaunchScreen.storyboard */,
 				B26E16781D8BA3E8001FE248 /* Info.plist */,
+				B2FE01D61D8C01F10019013B /* Config.swift */,
 			);
 			path = CFA;
 			sourceTree = "<group>";
@@ -262,9 +277,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B26E166F1D8BA3E8001FE248 /* SecondViewController.swift in Sources */,
+				B2FE01D31D8BDF3A0019013B /* VideosViewController.swift in Sources */,
+				B26E166F1D8BA3E8001FE248 /* MapsViewController.swift in Sources */,
 				B26E166B1D8BA3E8001FE248 /* AppDelegate.swift in Sources */,
-				B26E166D1D8BA3E8001FE248 /* FirstViewController.swift in Sources */,
+				B26E166D1D8BA3E8001FE248 /* ScheduleViewController.swift in Sources */,
+				B2FE01CF1D8BDF250019013B /* NewsViewController.swift in Sources */,
+				B2FE01D71D8C01F10019013B /* Config.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,7 +290,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2FE01D41D8BDF3A0019013B /* VideosViewController.swift in Sources */,
+				B2FE01D81D8C01F10019013B /* Config.swift in Sources */,
 				B26E16821D8BA3E8001FE248 /* CFATests.swift in Sources */,
+				B2FE01D01D8BDF250019013B /* NewsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,7 +301,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2FE01D51D8BDF3A0019013B /* VideosViewController.swift in Sources */,
+				B2FE01D91D8C01F10019013B /* Config.swift in Sources */,
 				B26E168D1D8BA3E8001FE248 /* CFAUITests.swift in Sources */,
+				B2FE01D11D8BDF250019013B /* NewsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,6 +531,7 @@
 				B26E16931D8BA3E8001FE248 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B26E16941D8BA3E8001FE248 /* Build configuration list for PBXNativeTarget "CFATests" */ = {
 			isa = XCConfigurationList;
@@ -515,6 +540,7 @@
 				B26E16961D8BA3E8001FE248 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B26E16971D8BA3E8001FE248 /* Build configuration list for PBXNativeTarget "CFAUITests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +549,7 @@
 				B26E16991D8BA3E8001FE248 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
