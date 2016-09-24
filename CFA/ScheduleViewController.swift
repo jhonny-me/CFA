@@ -20,6 +20,15 @@ class ScheduleViewController: UIViewController {
 //        tableView.register(ScheduleCell.classForCoder(), forCellReuseIdentifier: ScheduleCell.Identifier)
         tableView.register(ScheduleHeaderView.classForCoder(), forHeaderFooterViewReuseIdentifier: ScheduleHeaderView.Identifer)
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    
+        if Control.domainSetted { return }
+        guard let setupVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SetupViewController") as? SetupViewController else { return }
+        
+        present(setupVC, animated: false, completion: nil)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -61,7 +70,6 @@ extension ScheduleViewController: UITableViewDelegate, UITableViewDataSource {
 //        cell.backgroundColor = Config.scheduleCellColor
         return cell
     }
-    
 }
 
 class ScheduleCell: UITableViewCell {

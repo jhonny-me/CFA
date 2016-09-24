@@ -116,6 +116,67 @@
             </objects>
             <point key="canvasLocation" x="1687.2" y="-818.14092953523243"/>
         </scene>
+        <!--Setup View Controller-->
+        <scene sceneID="cdD-CX-gmi">
+            <objects>
+                <viewController storyboardIdentifier="SetupViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Qto-8M-nA1" customClass="SetupViewController" customModule="CFA" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mCN-vW-vmk"/>
+                        <viewControllerLayoutGuide type="bottom" id="mbr-mk-bt8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ilQ-Uz-jEU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="wiredcraft" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8pO-ET-U52">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="W8M-Ew-Y9F"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Qto-8M-nA1" id="OLS-QJ-VKF"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=".cfa.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3JM-gv-4m0">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="udF-KS-yOl">
+                                <state key="normal" title="Skip to Test"/>
+                                <connections>
+                                    <action selector="skipButton_Pressed" destination="Qto-8M-nA1" eventType="touchUpInside" id="nCv-Lp-OPj"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="setup domin to continue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B3o-2e-t1o">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8pO-ET-U52" firstAttribute="centerY" secondItem="ilQ-Uz-jEU" secondAttribute="centerY" id="08c-Lo-E8M"/>
+                            <constraint firstItem="3JM-gv-4m0" firstAttribute="centerX" secondItem="ilQ-Uz-jEU" secondAttribute="centerX" constant="50" id="3c0-Me-ICo"/>
+                            <constraint firstItem="mbr-mk-bt8" firstAttribute="top" secondItem="udF-KS-yOl" secondAttribute="bottom" constant="100" id="6Mn-KX-gQB"/>
+                            <constraint firstItem="udF-KS-yOl" firstAttribute="centerX" secondItem="ilQ-Uz-jEU" secondAttribute="centerX" id="9dD-WA-YPN"/>
+                            <constraint firstItem="8pO-ET-U52" firstAttribute="top" secondItem="B3o-2e-t1o" secondAttribute="bottom" constant="40" id="FnE-VC-iZ2"/>
+                            <constraint firstItem="3JM-gv-4m0" firstAttribute="leading" secondItem="8pO-ET-U52" secondAttribute="trailing" constant="10" id="Y4Y-Bh-efN"/>
+                            <constraint firstItem="B3o-2e-t1o" firstAttribute="centerX" secondItem="ilQ-Uz-jEU" secondAttribute="centerX" id="kMK-zc-jiB"/>
+                            <constraint firstItem="3JM-gv-4m0" firstAttribute="centerY" secondItem="ilQ-Uz-jEU" secondAttribute="centerY" id="sxp-XI-vqz"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="wca-fS-CcS"/>
+                    <connections>
+                        <outlet property="domianNameTextField" destination="8pO-ET-U52" id="clu-Zk-Xdf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vcM-ee-8KJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1457" y="-2190"/>
+        </scene>
         <!--ScheduleVC-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
@@ -131,7 +192,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XfC-hP-lxy">
                                 <color key="backgroundColor" red="0.1647058824" green="0.1764705882" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <searchBar key="tableHeaderView" contentMode="redraw" barStyle="black" searchBarStyle="prominent" placeholder="Search Schedule" translucent="NO" id="Fi1-YR-0mI">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <color key="barTintColor" red="0.16470588235294117" green="0.1764705882352941" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                                     <textInputTraits key="textInputTraits"/>
