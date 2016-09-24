@@ -19,14 +19,20 @@ class MapsViewController: UIViewController {
         if let layout = collectView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.scrollDirection = .horizontal
         }
+        
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
-
+    @IBAction func pageChanged(_ sender: UIPageControl) {
+        let index = IndexPath(row: sender.currentPage, section: 0)
+        collectView.scrollToItem(at: index, at: .centeredHorizontally, animated: true)
+        title = "number \(sender.currentPage + 1) floor"
+    }
 }
 
 extension MapsViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -37,14 +43,23 @@ extension MapsViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MapImageCell.Identifier, for: indexPath)
-        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return collectionView.frame.size
     }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let index = Int(scrollView.contentOffset.x / scrollView.bounds.width)
+        let pageIndex = pageControl.currentPage
+        if index == pageIndex { return }
+        pageControl.currentPage = index
+        
+        title = "number \(index + 1) floor"
+    }
 }
+
 
 
 class MapImageCell: UICollectionViewCell {

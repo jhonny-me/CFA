@@ -9,6 +9,8 @@
 import UIKit
 
 class NewsViewController: UIViewController {
+    
+    @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,4 +34,56 @@ class NewsViewController: UIViewController {
     }
     */
 
+}
+
+extension NewsViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: NewsCell.Identifier, for: indexPath) as? NewsCell else { return UITableViewCell() }
+        
+        return cell
+    }
+}
+
+
+class NewsCell: UITableViewCell {
+    
+    static let Identifier = "NewsCellIdentifier"
+    @IBOutlet weak var newsLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var photoCountLabel: UILabel!
+    
+    override func didMoveToSuperview() {
+        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.scrollDirection = .horizontal
+        }
+    }
+}
+
+extension NewsCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width/3, height: collectionView.frame.height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 4
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCell.Identifier, for: indexPath) as? ImageCell else { return ImageCell() }
+        return cell
+    }
+}
+
+class ImageCell: UICollectionViewCell {
+    
+    static let Identifier = "ImageCellIdentifier"
+    @IBOutlet weak var imageView: UIImageView!
+    
 }

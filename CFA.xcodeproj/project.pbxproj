@@ -7,23 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B223D5671D967C3C00D6F12F /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B223D5601D967C3C00D6F12F /* Config.swift */; };
+		B223D5681D967C3C00D6F12F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B223D5611D967C3C00D6F12F /* Info.plist */; };
+		B223D5691D967C3C00D6F12F /* MapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B223D5621D967C3C00D6F12F /* MapsViewController.swift */; };
+		B223D56A1D967C3C00D6F12F /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B223D5631D967C3C00D6F12F /* NewsViewController.swift */; };
+		B223D56B1D967C3C00D6F12F /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B223D5641D967C3C00D6F12F /* ScheduleViewController.swift */; };
+		B223D56C1D967C3C00D6F12F /* UIColor+CFA.swift in Sources */ = {isa = PBXBuildFile; fileRef = B223D5651D967C3C00D6F12F /* UIColor+CFA.swift */; };
+		B223D56D1D967C3C00D6F12F /* VideosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B223D5661D967C3C00D6F12F /* VideosViewController.swift */; };
+		B226006D1D967849004CC331 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B226006C1D967849004CC331 /* Default-568h@2x.png */; };
 		B26E166B1D8BA3E8001FE248 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E166A1D8BA3E8001FE248 /* AppDelegate.swift */; };
-		B26E166D1D8BA3E8001FE248 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E166C1D8BA3E8001FE248 /* ScheduleViewController.swift */; };
-		B26E166F1D8BA3E8001FE248 /* MapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E166E1D8BA3E8001FE248 /* MapsViewController.swift */; };
 		B26E16721D8BA3E8001FE248 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B26E16701D8BA3E8001FE248 /* Main.storyboard */; };
 		B26E16741D8BA3E8001FE248 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B26E16731D8BA3E8001FE248 /* Assets.xcassets */; };
 		B26E16771D8BA3E8001FE248 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B26E16751D8BA3E8001FE248 /* LaunchScreen.storyboard */; };
 		B26E16821D8BA3E8001FE248 /* CFATests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E16811D8BA3E8001FE248 /* CFATests.swift */; };
 		B26E168D1D8BA3E8001FE248 /* CFAUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E168C1D8BA3E8001FE248 /* CFAUITests.swift */; };
-		B2FE01CF1D8BDF250019013B /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FE01CE1D8BDF250019013B /* NewsViewController.swift */; };
-		B2FE01D01D8BDF250019013B /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FE01CE1D8BDF250019013B /* NewsViewController.swift */; };
-		B2FE01D11D8BDF250019013B /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FE01CE1D8BDF250019013B /* NewsViewController.swift */; };
-		B2FE01D31D8BDF3A0019013B /* VideosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FE01D21D8BDF3A0019013B /* VideosViewController.swift */; };
-		B2FE01D41D8BDF3A0019013B /* VideosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FE01D21D8BDF3A0019013B /* VideosViewController.swift */; };
-		B2FE01D51D8BDF3A0019013B /* VideosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FE01D21D8BDF3A0019013B /* VideosViewController.swift */; };
-		B2FE01D71D8C01F10019013B /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FE01D61D8C01F10019013B /* Config.swift */; };
-		B2FE01D81D8C01F10019013B /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FE01D61D8C01F10019013B /* Config.swift */; };
-		B2FE01D91D8C01F10019013B /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FE01D61D8C01F10019013B /* Config.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,23 +41,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B223D5601D967C3C00D6F12F /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		B223D5611D967C3C00D6F12F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B223D5621D967C3C00D6F12F /* MapsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapsViewController.swift; sourceTree = "<group>"; };
+		B223D5631D967C3C00D6F12F /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		B223D5641D967C3C00D6F12F /* ScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
+		B223D5651D967C3C00D6F12F /* UIColor+CFA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+CFA.swift"; sourceTree = "<group>"; };
+		B223D5661D967C3C00D6F12F /* VideosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosViewController.swift; sourceTree = "<group>"; };
+		B226006C1D967849004CC331 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		B26E16671D8BA3E8001FE248 /* CFA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CFA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B26E166A1D8BA3E8001FE248 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B26E166C1D8BA3E8001FE248 /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
-		B26E166E1D8BA3E8001FE248 /* MapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsViewController.swift; sourceTree = "<group>"; };
 		B26E16711D8BA3E8001FE248 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B26E16731D8BA3E8001FE248 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B26E16761D8BA3E8001FE248 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		B26E16781D8BA3E8001FE248 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B26E167D1D8BA3E8001FE248 /* CFATests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CFATests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B26E16811D8BA3E8001FE248 /* CFATests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFATests.swift; sourceTree = "<group>"; };
 		B26E16831D8BA3E8001FE248 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B26E16881D8BA3E8001FE248 /* CFAUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CFAUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B26E168C1D8BA3E8001FE248 /* CFAUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFAUITests.swift; sourceTree = "<group>"; };
 		B26E168E1D8BA3E8001FE248 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B2FE01CE1D8BDF250019013B /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
-		B2FE01D21D8BDF3A0019013B /* VideosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosViewController.swift; sourceTree = "<group>"; };
-		B2FE01D61D8C01F10019013B /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +90,7 @@
 		B26E165E1D8BA3E8001FE248 = {
 			isa = PBXGroup;
 			children = (
+				B226006C1D967849004CC331 /* Default-568h@2x.png */,
 				B26E16691D8BA3E8001FE248 /* CFA */,
 				B26E16801D8BA3E8001FE248 /* CFATests */,
 				B26E168B1D8BA3E8001FE248 /* CFAUITests */,
@@ -111,16 +111,17 @@
 		B26E16691D8BA3E8001FE248 /* CFA */ = {
 			isa = PBXGroup;
 			children = (
+				B223D5601D967C3C00D6F12F /* Config.swift */,
+				B223D5611D967C3C00D6F12F /* Info.plist */,
+				B223D5621D967C3C00D6F12F /* MapsViewController.swift */,
+				B223D5631D967C3C00D6F12F /* NewsViewController.swift */,
+				B223D5641D967C3C00D6F12F /* ScheduleViewController.swift */,
+				B223D5651D967C3C00D6F12F /* UIColor+CFA.swift */,
+				B223D5661D967C3C00D6F12F /* VideosViewController.swift */,
 				B26E166A1D8BA3E8001FE248 /* AppDelegate.swift */,
-				B26E166C1D8BA3E8001FE248 /* ScheduleViewController.swift */,
-				B26E166E1D8BA3E8001FE248 /* MapsViewController.swift */,
-				B2FE01CE1D8BDF250019013B /* NewsViewController.swift */,
-				B2FE01D21D8BDF3A0019013B /* VideosViewController.swift */,
 				B26E16701D8BA3E8001FE248 /* Main.storyboard */,
 				B26E16731D8BA3E8001FE248 /* Assets.xcassets */,
 				B26E16751D8BA3E8001FE248 /* LaunchScreen.storyboard */,
-				B26E16781D8BA3E8001FE248 /* Info.plist */,
-				B2FE01D61D8C01F10019013B /* Config.swift */,
 			);
 			path = CFA;
 			sourceTree = "<group>";
@@ -211,6 +212,7 @@
 				TargetAttributes = {
 					B26E16661D8BA3E8001FE248 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = CD75Y82V4U;
 						ProvisioningStyle = Automatic;
 					};
 					B26E167C1D8BA3E8001FE248 = {
@@ -250,9 +252,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B226006D1D967849004CC331 /* Default-568h@2x.png in Resources */,
 				B26E16771D8BA3E8001FE248 /* LaunchScreen.storyboard in Resources */,
 				B26E16741D8BA3E8001FE248 /* Assets.xcassets in Resources */,
 				B26E16721D8BA3E8001FE248 /* Main.storyboard in Resources */,
+				B223D5681D967C3C00D6F12F /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,12 +281,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2FE01D31D8BDF3A0019013B /* VideosViewController.swift in Sources */,
-				B26E166F1D8BA3E8001FE248 /* MapsViewController.swift in Sources */,
+				B223D56C1D967C3C00D6F12F /* UIColor+CFA.swift in Sources */,
+				B223D56B1D967C3C00D6F12F /* ScheduleViewController.swift in Sources */,
+				B223D5691D967C3C00D6F12F /* MapsViewController.swift in Sources */,
+				B223D56D1D967C3C00D6F12F /* VideosViewController.swift in Sources */,
 				B26E166B1D8BA3E8001FE248 /* AppDelegate.swift in Sources */,
-				B26E166D1D8BA3E8001FE248 /* ScheduleViewController.swift in Sources */,
-				B2FE01CF1D8BDF250019013B /* NewsViewController.swift in Sources */,
-				B2FE01D71D8C01F10019013B /* Config.swift in Sources */,
+				B223D5671D967C3C00D6F12F /* Config.swift in Sources */,
+				B223D56A1D967C3C00D6F12F /* NewsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,10 +295,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2FE01D41D8BDF3A0019013B /* VideosViewController.swift in Sources */,
-				B2FE01D81D8C01F10019013B /* Config.swift in Sources */,
 				B26E16821D8BA3E8001FE248 /* CFATests.swift in Sources */,
-				B2FE01D01D8BDF250019013B /* NewsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,10 +303,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2FE01D51D8BDF3A0019013B /* VideosViewController.swift in Sources */,
-				B2FE01D91D8C01F10019013B /* Config.swift in Sources */,
 				B26E168D1D8BA3E8001FE248 /* CFAUITests.swift in Sources */,
-				B2FE01D11D8BDF250019013B /* NewsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,7 +437,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = CFA/Info.plist;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = CD75Y82V4U;
+				INFOPLIST_FILE = "$(SRCROOT)/CFA/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Wiredcraft.CFA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -450,7 +451,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = CFA/Info.plist;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = CD75Y82V4U;
+				INFOPLIST_FILE = "$(SRCROOT)/CFA/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Wiredcraft.CFA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
