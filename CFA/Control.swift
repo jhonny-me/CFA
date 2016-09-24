@@ -9,12 +9,15 @@
 import Foundation
 
 final public class Control {
+    static var memoryDomianSetted: Bool = false
     static var domainSetted: Bool {
         get {
-            return UserDefaults.standard.bool(forKey: "com.wiredcraft.domainSetted")
+            return memoryDomianSetted
+//            return UserDefaults.standard.bool(forKey: "com.wiredcraft.domainSetted")
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: "com.wiredcraft.domainSetted")
+            memoryDomianSetted = newValue
+//            UserDefaults.standard.set(newValue, forKey: "com.wiredcraft.domainSetted")
         }
     }
 }
