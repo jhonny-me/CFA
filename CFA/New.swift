@@ -9,6 +9,7 @@
 import Foundation
 
 struct New {
+    let id: String
     let title: String
     let time: Date
     let imageURLs: [URL]

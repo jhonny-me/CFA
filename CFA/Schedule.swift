@@ -9,6 +9,7 @@
 import Foundation
 
 struct Schedule {
+    let id: String
     let title: String
     let startTime: Date
     let endTime: Date
@@ -21,13 +22,14 @@ struct Schedule {
 extension Schedule: Comparable {
     init?(json: JSONDictionary) {
         guard
+            let id              = json["id"] as? String,
             let title           = json["title"] as? String,
             let startTimeString = json["startTime"] as? String,
             let endTimeString   = json["endTime"] as? String,
             let startTime       = startTimeString.date,
             let endTime         = endTimeString.date,
             let location        = json["location"] as? String else { return nil }
-        
+        self.id         = id
         self.title      = title
         self.location   = location
         self.startTime  = startTime
@@ -46,13 +48,4 @@ func ==(lhs: Schedule, rhs: Schedule) -> Bool{
 func <(lhs: Schedule, rhs: Schedule) -> Bool {
     return lhs.startTime < rhs.endTime ||
         (lhs.startTime == rhs.endTime && lhs.endTime < rhs.endTime)
-}
-
-// MARK: for api resource
-extension Schedule {
-    static let url: URL = URL(string: "./schedules")!
-    static let all = Resource<[Schedule]>(url: url, parseClosure: { (json) in
-                        let jsonDictionaries = json as? [JSONDictionary]
-                        return jsonDictionaries?.flatMap(Schedule.init)
-                    })
 }

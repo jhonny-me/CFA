@@ -56,7 +56,7 @@ extension MapsViewController: UICollectionViewDataSource, UICollectionViewDelega
         if index == pageIndex { return }
         pageControl.currentPage = index
         
-        title = "number \(index + 1) floor"
+//        title = "number \(index + 1) floor"
     }
 }
 

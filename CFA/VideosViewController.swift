@@ -54,8 +54,7 @@ class VideosViewController: UIViewController {
 
 extension VideosViewController: UISearchResultsUpdating, UISearchBarDelegate {
     func updateSearchResults(for searchController: UISearchController) {
-        let searchString = searchController.searchBar.text
-        print(searchString)
+//        let searchString = searchController.searchBar.text
 //        [self searchForText:searchString scope:searchController.searchBar.selectedScopeButtonIndex];
         tableView.reloadData()
     }
