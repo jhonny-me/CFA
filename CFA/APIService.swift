@@ -8,7 +8,7 @@
 
 import Foundation
 
-let baseAPIURL = "35.189.185.244:3000/api"
+let baseAPIURL = "http://35.189.185.244:3000/api"
 let registerURL = baseAPIURL + "/managers"
 let loginURL = baseAPIURL + "/managers/login"
 let logoutURL = baseAPIURL + "/managers/logout"
@@ -59,7 +59,7 @@ final class APIService: NSObject {
     func baseRequest(method: HTTPMethod = .GET, url: String, param: JSONDictionary = [:], headers: [String: String] = [:], callback: @escaping (Result<JSONDictionary>) -> ()) {
         
         guard let url = URL(string: url) else { return callback(.failure(APIError.default)) }
-        guard let namespace = namespace else { return callback(.failure(APIError.namespaceNeed)) }
+//        guard let namespace = namespace else { return callback(.failure(APIError.namespaceNeed)) }
         
         var request = URLRequest.init(url: url, cachePolicy: .reloadRevalidatingCacheData, timeoutInterval: 15)
         request.httpMethod = method.rawValue
@@ -74,6 +74,7 @@ final class APIService: NSObject {
             guard
                 let data = data,
                 let json = (try? JSONSerialization.jsonObject(with: data, options: [])) as? JSONDictionary else { return callback(.failure(APIError.parse))}
+            print("url: \(url), data: \(json)")
             callback(.success(json))
         }.resume()
     }

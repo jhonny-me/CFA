@@ -15,6 +15,8 @@
 		B223D56D1D967C3C00D6F12F /* VideosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B223D5661D967C3C00D6F12F /* VideosViewController.swift */; };
 		B226006D1D967849004CC331 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B226006C1D967849004CC331 /* Default-568h@2x.png */; };
 		B261E47A1EB080850053DF64 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = B261E4791EB080850053DF64 /* Video.swift */; };
+		B261E47C1EB093C10053DF64 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B261E47B1EB093C10053DF64 /* LoginViewController.swift */; };
+		B261E47E1EB09A420053DF64 /* UIStoryboard+CFA.swift in Sources */ = {isa = PBXBuildFile; fileRef = B261E47D1EB09A420053DF64 /* UIStoryboard+CFA.swift */; };
 		B26E166B1D8BA3E8001FE248 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E166A1D8BA3E8001FE248 /* AppDelegate.swift */; };
 		B26E16721D8BA3E8001FE248 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B26E16701D8BA3E8001FE248 /* Main.storyboard */; };
 		B26E16741D8BA3E8001FE248 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B26E16731D8BA3E8001FE248 /* Assets.xcassets */; };
@@ -38,6 +40,8 @@
 		B223D5661D967C3C00D6F12F /* VideosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosViewController.swift; sourceTree = "<group>"; };
 		B226006C1D967849004CC331 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		B261E4791EB080850053DF64 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		B261E47B1EB093C10053DF64 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		B261E47D1EB09A420053DF64 /* UIStoryboard+CFA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+CFA.swift"; sourceTree = "<group>"; };
 		B26E16671D8BA3E8001FE248 /* CFA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CFA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B26E166A1D8BA3E8001FE248 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B26E16711D8BA3E8001FE248 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -128,6 +132,7 @@
 				B223D5641D967C3C00D6F12F /* ScheduleViewController.swift */,
 				B223D5661D967C3C00D6F12F /* VideosViewController.swift */,
 				B2F8A0891D96D1AF00FB4C16 /* SetupViewController.swift */,
+				B261E47B1EB093C10053DF64 /* LoginViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -138,6 +143,7 @@
 				B223D5651D967C3C00D6F12F /* UIColor+CFA.swift */,
 				B2F8A0801D96A78C00FB4C16 /* Date+CFA.swift */,
 				B2F8A0831D96A99200FB4C16 /* String+CFA.swift */,
+				B261E47D1EB09A420053DF64 /* UIStoryboard+CFA.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -244,6 +250,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B261E47E1EB09A420053DF64 /* UIStoryboard+CFA.swift in Sources */,
 				B223D56C1D967C3C00D6F12F /* UIColor+CFA.swift in Sources */,
 				B223D56B1D967C3C00D6F12F /* ScheduleViewController.swift in Sources */,
 				B223D5691D967C3C00D6F12F /* MapsViewController.swift in Sources */,
@@ -256,6 +263,7 @@
 				B2F8A0761D96833F00FB4C16 /* APIService.swift in Sources */,
 				B2F8A08D1D96D90D00FB4C16 /* Control.swift in Sources */,
 				B2F8A0841D96A99200FB4C16 /* String+CFA.swift in Sources */,
+				B261E47C1EB093C10053DF64 /* LoginViewController.swift in Sources */,
 				B2F8A0811D96A78C00FB4C16 /* Date+CFA.swift in Sources */,
 				B2F8A08A1D96D1AF00FB4C16 /* SetupViewController.swift in Sources */,
 				B223D56A1D967C3C00D6F12F /* NewsViewController.swift in Sources */,

@@ -28,11 +28,26 @@ class SetupViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
+    func checkAvailable() {
+        let namespace = domianNameTextField.text!
+        APIService.default.checkaAvailable(namespace: namespace) { (result) in
+            result.successCallback {
+                self.dismiss(animated: true, completion: nil)
+            }.failureCallback({ (err) in
+                print(err)
+                let register = UIStoryboard(.Main).initiate(LoginViewController.self)
+                register.isRegister = true
+                register.namespace = namespace
+                self.present(register, animated: true, completion: nil)
+            })
+        }
+    }
 }
 
 extension SetupViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        checkAvailable()
         return true
     }
 }
