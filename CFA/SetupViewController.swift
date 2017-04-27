@@ -24,21 +24,24 @@ class SetupViewController: UIViewController {
     }
     
     @IBAction func skipButton_Pressed() {
-        Control.domainSetted = true
         dismiss(animated: true, completion: nil)
     }
 
     func checkAvailable() {
         let namespace = domianNameTextField.text!
         APIService.default.checkaAvailable(namespace: namespace) { (result) in
-            result.successCallback {
-                self.dismiss(animated: true, completion: nil)
+            result.successCallback { result in
+                if result {
+                    let register = UIStoryboard(.Main).initiate(LoginViewController.self)
+                    register.isRegister = true
+                    register.namespace = namespace
+                    self.present(register, animated: true, completion: nil)
+                }else {
+                    APIService.default.namespace = namespace
+                    self.dismiss(animated: true, completion: nil)
+                }
             }.failureCallback({ (err) in
                 print(err)
-                let register = UIStoryboard(.Main).initiate(LoginViewController.self)
-                register.isRegister = true
-                register.namespace = namespace
-                self.present(register, animated: true, completion: nil)
             })
         }
     }

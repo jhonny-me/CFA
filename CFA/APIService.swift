@@ -8,14 +8,14 @@
 
 import Foundation
 
-let baseAPIURL = "http://35.189.185.244:3000/api"
+let baseAPIURL = "http://192.168.1.51:3000/api"//"http://35.189.185.244:3000/api"
 let registerURL = baseAPIURL + "/managers"
 let loginURL = baseAPIURL + "/managers/login"
 let logoutURL = baseAPIURL + "/managers/logout"
 let videoURL = baseAPIURL + "/videos"
 let scheduleURL = baseAPIURL + "/schedules"
 let newURL = baseAPIURL + "/news"
-let namespaceAvailableURL = baseAPIURL + "/namespace/available"
+let namespaceAvailableURL = baseAPIURL + "/Namespaces/available"
 
 enum APIError: Error {
     case timeout
@@ -59,15 +59,17 @@ final class APIService: NSObject {
     func baseRequest(method: HTTPMethod = .GET, url: String, param: JSONDictionary = [:], headers: [String: String] = [:], callback: @escaping (Result<JSONDictionary>) -> ()) {
         
         guard let url = URL(string: url) else { return callback(.failure(APIError.default)) }
-//        guard let namespace = namespace else { return callback(.failure(APIError.namespaceNeed)) }
         
         var request = URLRequest.init(url: url, cachePolicy: .reloadRevalidatingCacheData, timeoutInterval: 15)
         request.httpMethod = method.rawValue
         request.allHTTPHeaderFields?["Accept"] = "application/json"
+        request.allHTTPHeaderFields?["Content-Type"] = "application/json"
         request.allHTTPHeaderFields?["namespace"] = namespace
         headers.forEach { (key, value) in
             request.allHTTPHeaderFields?[key] = value
         }
+        request.httpShouldHandleCookies = false
+        request.httpBody = try? JSONSerialization.data(withJSONObject: param, options: [])
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error { return callback(.failure(error)) }
@@ -119,15 +121,20 @@ extension APIService {
     }
     
     func logout(callback: @escaping (Result<Void>) -> ()) {
-        requestWithToken(method: .POST, url: logoutURL) { (_) in
-            
+        requestWithToken(method: .POST, url: logoutURL) { (result) in
+            result.successCallback({ (_) in
+                callback(.success())
+            }).failureCallback({ (err) in
+                callback(.failure(err))
+            })
         }
     }
     
-    func checkaAvailable(namespace: String, callback: @escaping (Result<Void>) -> ()) {
-        baseRequest(method: .POST, url: namespaceAvailableURL, param: ["id": namespace]) { (result) in
+    func checkaAvailable(namespace: String, callback: @escaping (Result<Bool>) -> ()) {
+        baseRequest(method: .POST, url: namespaceAvailableURL, param: ["title": namespace]) { (result) in
             result.successCallback({ (json) in
-                callback(.success())
+                guard let result = json["result"] as? Bool else { return }
+                callback(.success(result))
             }).failureCallback({ (err) in
                 callback(.failure(err))
             })

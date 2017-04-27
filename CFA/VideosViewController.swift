@@ -16,7 +16,7 @@ class VideosViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         
         searchController.searchResultsUpdater = self
@@ -50,6 +50,9 @@ class VideosViewController: UIViewController {
     }
     */
 
+    @IBAction func addAction(with sender: Any) {
+        
+    }
 }
 
 extension VideosViewController: UISearchResultsUpdating, UISearchBarDelegate {

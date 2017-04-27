@@ -363,6 +363,12 @@
                     <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
                     <navigationItem key="navigationItem" id="LB0-Cp-NgT">
                         <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="account" id="VzP-rP-YMf">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="accountActionWith:" destination="9pv-A4-QxB" id="WYn-wT-fV8"/>
+                            </connections>
+                        </barButtonItem>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="GBd-p1-6L8">
                             <rect key="frame" x="112.5" y="7" width="150" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -372,6 +378,9 @@
                             </segments>
                             <color key="tintColor" red="0.5725490196078431" green="0.68627450980392157" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
                         </segmentedControl>
+                        <barButtonItem key="rightBarButtonItem" image="add" id="xOX-Wg-u2S">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="XfC-hP-lxy" id="TsS-6f-w6O"/>
@@ -506,7 +515,7 @@
                     <navigationItem key="navigationItem" id="Rgf-QR-bbP">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="BJY-vr-wlP">
-                            <rect key="frame" x="113" y="7" width="150" height="30"/>
+                            <rect key="frame" x="112.5" y="7" width="150" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="All"/>
@@ -514,6 +523,12 @@
                             </segments>
                             <color key="tintColor" red="0.57254901960000004" green="0.68627450980000004" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                         </segmentedControl>
+                        <barButtonItem key="rightBarButtonItem" image="add" id="l5O-Vs-Kqn">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="addActionWith:" destination="jYt-Gp-ItD" id="VEc-mV-br1"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="OOa-G4-QcF" id="2se-tD-FXH"/>
@@ -662,6 +677,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="account" width="16" height="16"/>
+        <image name="add" width="16" height="16"/>
         <image name="first" width="30" height="30"/>
         <image name="map" width="301" height="389"/>
         <image name="navbar_list" width="20" height="9"/>

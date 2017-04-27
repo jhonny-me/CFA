@@ -24,9 +24,8 @@ class ScheduleViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     
-        if Control.domainSetted { return }
-        guard let setupVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SetupViewController") as? SetupViewController else { return }
-        
+        if APIService.default.namespace != nil { return }
+        let setupVC = UIStoryboard(.Main).initiate(SetupViewController.self)
         present(setupVC, animated: false, completion: nil)
     }
 
@@ -35,6 +34,16 @@ class ScheduleViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func accountAction(with sender: Any) {
+        if let _ = APIService.default.token {
+            APIService.default.logout { _ in
+                APIService.default.token = nil
+            }
+        }else {
+            let login = UIStoryboard(.Main).initiate(LoginViewController.self)
+            present(login, animated: true, completion: nil)
+        }
+    }
     
 }
 

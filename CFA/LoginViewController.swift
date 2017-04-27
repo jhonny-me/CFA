@@ -25,6 +25,7 @@ class LoginViewController: UIViewController {
         namespaceLabel.isHidden = !isRegister
         namespaceTextField.isHidden = !isRegister
         namespaceTextField.text = namespace
+        loginBtn.setTitle(isRegister ? "register": "login", for: .normal)
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,9 +42,16 @@ class LoginViewController: UIViewController {
                 result.successCallback {
                     APIService.default.login(email: email, password: password, callback: { (loginResult) in
                         loginResult.successCallback {
-                            self.dismiss(animated: true, completion: nil)
+                            APIService.default.namespace = namespace
+                            self.presentingViewController?.dismiss(animated: true, completion: nil)
                         }
                     })
+                }
+            })
+        }else {
+            APIService.default.login(email: email, password: password, callback: { (result) in
+                result.successCallback {
+                    self.dismissAction(with: self)
                 }
             })
         }
@@ -51,5 +59,10 @@ class LoginViewController: UIViewController {
 
     @IBAction func dismissAction(with sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
     }
 }
