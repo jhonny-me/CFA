@@ -10,7 +10,6 @@ import UIKit
 
 class VideoDetailViewController: UIViewController {
 
-    @IBOutlet weak var playBtn
     
     override func viewDidLoad() {
         super.viewDidLoad()
