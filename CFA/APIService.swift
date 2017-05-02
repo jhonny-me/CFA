@@ -8,11 +8,13 @@
 
 import Foundation
 
-let baseAPIURL = "http://192.168.1.51:3000/api"//"http://35.189.185.244:3000/api"
+let baseAPIURL = "http://104.199.245.204:3000/api"
 let registerURL = baseAPIURL + "/managers"
 let loginURL = baseAPIURL + "/managers/login"
 let logoutURL = baseAPIURL + "/managers/logout"
-let videoURL = baseAPIURL + "/videos"
+
+let resourceURL = baseAPIURL + "/resources"
+
 let scheduleURL = baseAPIURL + "/schedules"
 let newURL = baseAPIURL + "/news"
 let namespaceAvailableURL = baseAPIURL + "/Namespaces/available"
@@ -143,13 +145,13 @@ extension APIService {
 }
 
 extension APIService {
-    func getAllVideos(_ callback: @escaping (Result<[Video]>) -> ()) {
-        baseRequest(url: videoURL) { (result) in
+    func getAllResources(_ callback: @escaping (Result<[Resource]>) -> ()) {
+        baseRequest(url: resourceURL) { (result) in
             result.successCallback({ (json) in
                 guard
                     let videosJSON = json["data"] as? [JSONDictionary]
                     else { return callback(.failure(APIError.server))}
-                let videos = videosJSON.flatMap(Video.init)
+                let videos = videosJSON.flatMap(Resource.init)
                 callback(.success(videos))
             }).failureCallback({ (err) in
                 callback(.failure(err))
@@ -157,25 +159,26 @@ extension APIService {
         }
     }
     
-    func createVideo(title: String, url: String, callback: @escaping (Result<Video>) -> ()) {
-        let param = [
-            "title": title,
+    func createResource(title: String, url: String, callback: @escaping (Result<Resource>) -> ()) {
+        let type = URL(string: url)?.pathExtension
+        var param = [
+            "name": title,
             "url": url
         ]
-        requestWithToken(method: .POST, url: videoURL, param: param) { (result) in
+        param["type"] = type
+        requestWithToken(method: .POST, url: resourceURL, param: param) { (result) in
             result.successCallback({ (json) in
                 guard
-                    let videoJson = json["data"] as? JSONDictionary,
-                    let video = Video(with: videoJson) else { return callback(.failure(APIError.server)) }
-                callback(.success(video))
+                    let resource = (json["data"] as? JSONDictionary).flatMap(Resource.init) else { return callback(.failure(APIError.server)) }
+                callback(.success(resource))
             }).failureCallback({ (err) in
                 callback(.failure(err))
             })
         }
     }
     
-    func deleteVideo(id: String, callback: @escaping (Result<Void>) -> ()){
-        requestWithToken(method: .DELETE, url: videoURL, param: ["id": id]) { (result) in
+    func deleteResource(id: String, callback: @escaping (Result<Void>) -> ()){
+        requestWithToken(method: .DELETE, url: resourceURL, param: ["id": id]) { (result) in
             result.successCallback({ (_) in
                 callback(.success())
             }).failureCallback({ (err) in

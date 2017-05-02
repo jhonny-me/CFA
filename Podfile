@@ -6,6 +6,8 @@ target 'CFA' do
   use_frameworks!
 
   # Pods for CFA
-  pod "MobilePlayer"
+  # pod "MobilePlayer"
+  # video player
+  pod 'BMPlayer'
 
 end

@@ -8,24 +8,40 @@
 
 import Foundation
 
-struct Video {
+struct Resource {
+    let fileType: FileType
+    let name: String
     let id: String
-    let title: String
-    let uploadTime: Date?
-    let lastTime: TimeInterval?
     let url: URL?
+    let coverUrl: URL?
+    let size: Int?
+    let description: String?
+    let scheduleId: String?
 }
 
-extension Video {
-    init?(with json: JSONDictionary) {
+extension Resource {
+    enum FileType: String {
+        case png, jpg
+        case mp4
+        case ppt
+        case markdown
+    }
+}
+
+extension Resource {
+    init?(_ json: JSONDictionary) {
         guard
             let id = json["id"] as? String,
-            let title = json["title"] as? String
+            let name = json["name"] as? String,
+            let type = (json["type"] as? String).flatMap(FileType.init)
             else { return nil }
         self.id = id
-        self.title = title
-        self.uploadTime = (json["uploadTime"] as? TimeInterval).flatMap { Date(timeIntervalSince1970: $0) }
-        self.lastTime = json["lastTime"] as? TimeInterval
+        self.name = name
+        self.fileType = type
         self.url = (json["url"] as? String).flatMap(URL.init)
+        self.coverUrl = (json["coverUrl"] as? String).flatMap(URL.init)
+        self.size = json["size"] as? Int
+        self.description = json["description"] as? String
+        self.scheduleId = json["scheduleId"] as? String
     }
 }

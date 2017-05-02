@@ -51,7 +51,10 @@ class VideosViewController: UIViewController {
     */
 
     @IBAction func addAction(with sender: Any) {
-        
+        let vc = UIStoryboard(.Main).initiate(VideoDetailViewController.self)
+        vc.mode = .create
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
@@ -98,6 +101,13 @@ extension VideosViewController: UITableViewDelegate, UITableViewDataSource {
         cell.detailTextLabel?.text = "2016 - Session 104"
         //        cell.backgroundColor = Config.scheduleCellColor
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let videoDetailVC = UIStoryboard(.Main).initiate(VideoDetailViewController.self)
+        videoDetailVC.mode = .read
+        videoDetailVC.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(videoDetailVC, animated: true)
     }
     
 }
