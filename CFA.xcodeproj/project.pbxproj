@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		7E5AEFEAB148A1DE0611673C /* Pods_CFA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 039E3FA15DDB5E01B3BFBCE0 /* Pods_CFA.framework */; };
 		B2041F301EB5C619008A9668 /* GeneralModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2041F2F1EB5C619008A9668 /* GeneralModels.swift */; };
+		B2041F371EB8D902008A9668 /* UITableView+CFA.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2041F361EB8D902008A9668 /* UITableView+CFA.swift */; };
+		B2041F481EBA219C008A9668 /* NoDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2041F471EBA219C008A9668 /* NoDataView.swift */; };
 		B223D5671D967C3C00D6F12F /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B223D5601D967C3C00D6F12F /* Config.swift */; };
 		B223D5691D967C3C00D6F12F /* MapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B223D5621D967C3C00D6F12F /* MapsViewController.swift */; };
 		B223D56A1D967C3C00D6F12F /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B223D5631D967C3C00D6F12F /* NewsViewController.swift */; };
@@ -39,6 +41,8 @@
 		3EF3B8070ABF7387F4FDA8D5 /* Pods-CFA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CFA.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CFA/Pods-CFA.debug.xcconfig"; sourceTree = "<group>"; };
 		8BD043DB70E9837D8C4EA04B /* Pods-CFA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CFA.release.xcconfig"; path = "Pods/Target Support Files/Pods-CFA/Pods-CFA.release.xcconfig"; sourceTree = "<group>"; };
 		B2041F2F1EB5C619008A9668 /* GeneralModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralModels.swift; sourceTree = "<group>"; };
+		B2041F361EB8D902008A9668 /* UITableView+CFA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+CFA.swift"; sourceTree = "<group>"; };
+		B2041F471EBA219C008A9668 /* NoDataView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoDataView.swift; sourceTree = "<group>"; };
 		B223D5601D967C3C00D6F12F /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		B223D5611D967C3C00D6F12F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B223D5621D967C3C00D6F12F /* MapsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapsViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +103,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B2041F351EB8D3A3008A9668 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Coordinators;
+			sourceTree = "<group>";
+		};
+		B2041F441EBA215A008A9668 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B2041F471EBA219C008A9668 /* NoDataView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		B26E165E1D8BA3E8001FE248 = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +142,8 @@
 		B26E16691D8BA3E8001FE248 /* CFA */ = {
 			isa = PBXGroup;
 			children = (
+				B2041F441EBA215A008A9668 /* Views */,
+				B2041F351EB8D3A3008A9668 /* Coordinators */,
 				B2F8A07C1D96A48E00FB4C16 /* Models */,
 				B2F8A07B1D96A42400FB4C16 /* Resources */,
 				B2F8A07A1D96A40E00FB4C16 /* Services */,
@@ -176,6 +197,7 @@
 				B2F8A0801D96A78C00FB4C16 /* Date+CFA.swift */,
 				B2F8A0831D96A99200FB4C16 /* String+CFA.swift */,
 				B261E47D1EB09A420053DF64 /* UIStoryboard+CFA.swift */,
+				B2041F361EB8D902008A9668 /* UITableView+CFA.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -216,12 +238,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B26E16911D8BA3E8001FE248 /* Build configuration list for PBXNativeTarget "CFA" */;
 			buildPhases = (
-				A13C2A9BC36FB7D2EE3B07FE /* 📦 Check Pods Manifest.lock */,
+				A13C2A9BC36FB7D2EE3B07FE /* [CP] Check Pods Manifest.lock */,
 				B26E16631D8BA3E8001FE248 /* Sources */,
 				B26E16641D8BA3E8001FE248 /* Frameworks */,
 				B26E16651D8BA3E8001FE248 /* Resources */,
-				46EE3B7085B277D9DB1BADE0 /* 📦 Embed Pods Frameworks */,
-				2D3CD058822E5FBB9E3BC25E /* 📦 Copy Pods Resources */,
+				46EE3B7085B277D9DB1BADE0 /* [CP] Embed Pods Frameworks */,
+				2D3CD058822E5FBB9E3BC25E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -245,6 +267,7 @@
 					B26E16661D8BA3E8001FE248 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = CD75Y82V4U;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -282,14 +305,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2D3CD058822E5FBB9E3BC25E /* 📦 Copy Pods Resources */ = {
+		2D3CD058822E5FBB9E3BC25E /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,14 +320,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CFA/Pods-CFA-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		46EE3B7085B277D9DB1BADE0 /* 📦 Embed Pods Frameworks */ = {
+		46EE3B7085B277D9DB1BADE0 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -312,19 +335,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CFA/Pods-CFA-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A13C2A9BC36FB7D2EE3B07FE /* 📦 Check Pods Manifest.lock */ = {
+		A13C2A9BC36FB7D2EE3B07FE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -334,10 +357,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2041F371EB8D902008A9668 /* UITableView+CFA.swift in Sources */,
 				B25E5C121EB1F3380048E92D /* VideoDetailViewController.swift in Sources */,
 				B261E47E1EB09A420053DF64 /* UIStoryboard+CFA.swift in Sources */,
 				B223D56C1D967C3C00D6F12F /* UIColor+CFA.swift in Sources */,
 				B223D56B1D967C3C00D6F12F /* ScheduleViewController.swift in Sources */,
+				B2041F481EBA219C008A9668 /* NoDataView.swift in Sources */,
 				B223D5691D967C3C00D6F12F /* MapsViewController.swift in Sources */,
 				B2F8A07E1D96A51400FB4C16 /* Schedule.swift in Sources */,
 				B261E47A1EB080850053DF64 /* Video.swift in Sources */,
@@ -477,12 +502,14 @@
 			baseConfigurationReference = 3EF3B8070ABF7387F4FDA8D5 /* Pods-CFA.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = CD75Y82V4U;
 				INFOPLIST_FILE = "$(SRCROOT)/CFA/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Wiredcraft.CFA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -492,6 +519,7 @@
 			baseConfigurationReference = 8BD043DB70E9837D8C4EA04B /* Pods-CFA.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = CD75Y82V4U;
 				INFOPLIST_FILE = "$(SRCROOT)/CFA/Info.plist";

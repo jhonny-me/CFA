@@ -1,4 +1,5 @@
 PODS:
+  - Aspects (1.4.1)
   - BMPlayer (0.8.4):
     - BMPlayer/Full (= 0.8.4)
   - BMPlayer/Core (0.8.4)
@@ -10,13 +11,15 @@ PODS:
   - SnapKit (3.2.0)
 
 DEPENDENCIES:
+  - Aspects
   - BMPlayer
 
 SPEC CHECKSUMS:
+  Aspects: 7595ba96a6727a58ebcbfc954497fc5d2fdde546
   BMPlayer: 9faf3d033ba6c60b110ac6edd1c25149aa6b2c5d
   NVActivityIndicatorView: 9f52a7f84bf5c6a798722c450fe3c198e01c56ed
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
 
-PODFILE CHECKSUM: db2ac575a04ea43d41c225a9015108eb50530fb8
+PODFILE CHECKSUM: 4aa9613c0ced5f59fba9d06ac00e1d85cd1a16d8
 
-COCOAPODS: 1.0.0
+COCOAPODS: 1.2.1

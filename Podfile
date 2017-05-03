@@ -8,6 +8,8 @@ target 'CFA' do
   # Pods for CFA
   # pod "MobilePlayer"
   # video player
-  pod 'BMPlayer'
+   pod 'BMPlayer'
+  # oop framework
+   pod 'Aspects'
 
 end

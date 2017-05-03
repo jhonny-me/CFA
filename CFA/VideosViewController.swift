@@ -11,6 +11,7 @@ import UIKit
 class VideosViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    var resources: [Resource] = []
     
     var searchController = UISearchController(searchResultsController: nil)
 
@@ -27,34 +28,45 @@ class VideosViewController: UIViewController {
         searchController.searchBar.backgroundColor = UIColor.red
         searchController.searchBar.placeholder = "Search Videos"
         searchController.searchBar.barTintColor = Config.mainBackgroundColor
-//        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.classForCoder() as! UIAppearanceContainer.Type]).backgroundColor = UIColor.black
+
         tableView.tableHeaderView = searchController.searchBar
+        tableView.setNoneDataView(NoDataView(frame: tableView.bounds)) { [weak self] in
+            self?.requestForData()
+        }
+        tableView.showNoneDataView()
         definesPresentationContext = true
         
         tableView.register(ScheduleHeaderView.classForCoder(), forHeaderFooterViewReuseIdentifier: ScheduleHeaderView.Identifer)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        requestForData()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     @IBAction func addAction(with sender: Any) {
         let vc = UIStoryboard(.Main).initiate(VideoDetailViewController.self)
         vc.mode = .create
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    private func requestForData() {
+        APIService.default.getAllResources { (result) in
+            result.successCallback({ (resours) in
+                self.resources = resours
+                self.tableView.reloadData()
+                if resours.count == 0 {
+                    self.tableView.showNoneDataView()
+                }
+            })
+        }
     }
 }
 
@@ -73,7 +85,7 @@ extension VideosViewController: UISearchResultsUpdating, UISearchBarDelegate {
 extension VideosViewController: UITableViewDelegate, UITableViewDataSource {
     // MARK: Sections
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return resources.count
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -97,8 +109,9 @@ extension VideosViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: VideosCell.Identifier, for: indexPath) as? VideosCell else { return UITableViewCell() }
-        cell.textLabel?.text = "Apple Design Awards"
-        cell.detailTextLabel?.text = "2016 - Session 104"
+        cell.config(with: resources[indexPath.row])
+//        cell.textLabel?.text = "Apple Design Awards"
+//        cell.detailTextLabel?.text = "2016 - Session 104"
         //        cell.backgroundColor = Config.scheduleCellColor
         return cell
     }
@@ -106,6 +119,7 @@ extension VideosViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let videoDetailVC = UIStoryboard(.Main).initiate(VideoDetailViewController.self)
         videoDetailVC.mode = .read
+        videoDetailVC.video = resources[indexPath.row]
         videoDetailVC.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(videoDetailVC, animated: true)
     }
@@ -124,5 +138,9 @@ class VideosCell: UITableViewCell {
         button.setImage(UIImage(named: "video_download"), for: .normal)
         
         accessoryView = button
+    }
+    
+    func config(with resource: Resource) {
+        textLabel?.text = resource.name
     }
 }
