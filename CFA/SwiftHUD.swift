@@ -67,13 +67,6 @@ extension SwiftHUD {
         case concurrent // all shows on screen
     }
     
-    enum AnimationStyle {
-        case none
-        case EaseInOut
-        case EaseIn
-        case EaseOut
-    }
-    
     enum Position {
         case top
         case bottom
@@ -83,8 +76,9 @@ extension SwiftHUD {
     struct Options: OptionSet {
         let rawValue: Int
         static let allowUserInteraction = Options(rawValue: 1<<0)
+        static let removeFromSuperViewWhenHide = Options(rawValue: 1<<1)
         
-        static let `default`: Options = [.allowUserInteraction]
+        static let `default`: Options = [.removeFromSuperViewWhenHide]
     }
 }
 
@@ -92,11 +86,11 @@ class SwiftHUD: UIView {
     fileprivate(set) var onScreenDuration: TimeInterval = 3
     fileprivate(set) var queueStyle: QueueStyle = .concurrent
 //    private(set) var animated: Bool = true
-    fileprivate(set) var animationStyle: AnimationStyle = .EaseInOut
+    fileprivate(set) var animationOptions: UIViewAnimationOptions = [.transitionCrossDissolve]
     fileprivate(set) var position: Position = .center
     fileprivate(set) var options: Options = .default
     
-    fileprivate(set) var destinationView: UIView? = UIApplication.shared.keyWindow
+    fileprivate(set) var destinationView: UIView?
     fileprivate(set) var backgroundView: UIView
     fileprivate(set) var bezelView: UIView
     fileprivate(set) var indicatorView: UIView?
@@ -126,6 +120,10 @@ class SwiftHUD: UIView {
         bezelView.layer.shadowColor = UIColor.black.cgColor
         bezelView.layer.shadowOffset = CGSize(width: 0, height: 1)
         bezelView.layer.shadowOpacity = 0.2
+        
+        if let keyWindow = UIApplication.shared.keyWindow {
+            addTo(keyWindow)
+        }
     }
 }
 
@@ -160,34 +158,45 @@ extension SwiftHUD {
         return view.subviews.filter { $0.isKind(of: SwiftHUD.self) } as! [SwiftHUD]
     }
     
+    @discardableResult
     func addTo(_ view: UIView) -> SwiftHUD {
         self.destinationView = view
         frame = view.bounds
         timer?.invalidate()
         return self
     }
-    
+    @discardableResult
     func duration(_ duration: TimeInterval) -> SwiftHUD {
         self.onScreenDuration = duration
         return self
     }
-    
+    @discardableResult
     func queueStyle(_ style: QueueStyle) -> SwiftHUD {
         self.queueStyle = style
         return self
     }
-    
+    @discardableResult
     func position(_ position: Position) -> SwiftHUD {
         self.position = position
         return self
     }
-    
+    @discardableResult
+    func animate(_ option: UIViewAnimationOptions) -> SwiftHUD {
+        self.animationOptions = option
+        return self
+    }
+    @discardableResult
     func addOption(_ option: Options) -> SwiftHUD {
-        self.options = self.options.union(option)
+        self.options = option
         return self
     }
     
     func show() {
+        // check piority
+        if let _ = destinationView?.hudViews().first, queueStyle == .pipe { return }
+        if let previousViews = destinationView?.hudViews(), queueStyle == .stack {
+            previousViews.forEach { $0.hide(animated: false) }
+        }
         /// autolayouts
         removeFromSuperview()
         destinationView?.addSubview(self)
@@ -198,7 +207,9 @@ extension SwiftHUD {
         backgroundView.addSubview(bezelView)
         
         bezelView.snp.makeConstraints { (maker) in
-            maker.centerX.equalTo(backgroundView)
+//            maker.centerX.equalTo(backgroundView)
+            //for snapshot
+            maker.left.equalTo(backgroundView.snp.right)
             switch position {
             case .center:
                 maker.centerY.equalTo(backgroundView)
@@ -234,12 +245,25 @@ extension SwiftHUD {
         self.layoutIfNeeded()
         // animation
         let bezelSnap = bezelView.snapshotView(afterScreenUpdates: true)
-        let container = UIView(frame: bezelView.frame)
+
+        bezelView.snp.remakeConstraints { (maker) in
+            maker.centerX.equalTo(backgroundView)
+            switch position {
+            case .center:
+                maker.centerY.equalTo(backgroundView)
+            case .top:
+                maker.top.equalTo(backgroundView).offset(20)
+            case .bottom:
+                maker.bottom.equalTo(backgroundView).offset(-20)
+            }
+        }
+        
+        let container = UIView(frame: CGRect(x: backgroundView.center.x - bezelView.frame.width/2, y: bezelView.frame.minY, width: bezelView.frame.width, height: bezelView.frame.height))
         
         destinationView?.addSubview(container)
         self.alpha = 0
-        DispatchQueue.main.asyncAfter(wallDeadline: .now() + 0.1) {
-            UIView.transition(with: container, duration: 0.3, options: .transitionFlipFromBottom, animations: {
+        DispatchQueue.main.asyncAfter(wallDeadline: .now() + 0.001) {
+            UIView.transition(with: container, duration: 0.3, options: self.animationOptions, animations: {
                 container.addSubview(bezelSnap!)
             }) { (_) in
                 container.removeFromSuperview()
@@ -254,13 +278,37 @@ extension SwiftHUD {
         
         // timer
         timer?.invalidate()
-        timer = Timer.scheduledTimer(timeInterval: onScreenDuration, target: self, selector: #selector(hide), userInfo: nil, repeats: false)
+        timer = Timer.scheduledTimer(timeInterval: onScreenDuration, target: self, selector: #selector(hide(animated:)), userInfo: nil, repeats: false)
     }
     
-    func hide() {
-        timer?.invalidate()
-        self.alpha = 0
+    func hide(animated: Bool = true) {
+        let completion: (Bool) -> Void = { _ in
+            self.timer?.invalidate()
+            if self.options.contains(.removeFromSuperViewWhenHide) {
+                self.removeFromSuperview()
+            }
+        }
+        if animated {
+            UIView.animate(withDuration: 0.3, animations: { 
+                self.alpha = 0
+            }, completion: completion)
+        }else {
+            self.alpha = 0
+            completion(true)
+        }
     }
 }
 
-
+extension UIView {
+    func hudViews() -> [SwiftHUD] {
+        return SwiftHUD.huds(on: self)
+    }
+    
+    func show(_ type: SwiftHUD.HUDType) {
+        SwiftHUD(type: type).addTo(self).show()
+    }
+    
+    func hideAllHUD(animated: Bool = false) {
+        hudViews().forEach { $0.hide(animated: animated) }
+    }
+}

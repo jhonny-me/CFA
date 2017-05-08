@@ -24,12 +24,15 @@ class ScheduleViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        DispatchQueue.global().asyncAfter(wallDeadline: .now() + 1) { 
-            DispatchQueue.main.async {
-                SwiftHUD(type: .progress(nil)).addTo(self.view).position(.center).addOption(.allowUserInteraction).show()
-            }
+        DispatchQueue.main.asyncAfter(wallDeadline: .now() + 0.3) {
+            self.view.show(.toast("something went wrong"))
         }
-        
+        DispatchQueue.main.asyncAfter(wallDeadline: .now() + 1) { 
+            SwiftHUD(type: .progress(nil)).queueStyle(.concurrent).addTo(self.view).animate([]).show()
+        }
+        DispatchQueue.main.asyncAfter(wallDeadline: .now() + 1.3) { 
+            SwiftHUD(type: .progress(nil)).queueStyle(.stack).position(.top).addTo(self.view).show()
+        }
     
         if APIService.default.namespace != nil { return }
         let setupVC = UIStoryboard(.Main).initiate(SetupViewController.self)
