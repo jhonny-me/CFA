@@ -11,6 +11,7 @@
 		B2041F301EB5C619008A9668 /* GeneralModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2041F2F1EB5C619008A9668 /* GeneralModels.swift */; };
 		B2041F371EB8D902008A9668 /* UITableView+CFA.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2041F361EB8D902008A9668 /* UITableView+CFA.swift */; };
 		B2041F481EBA219C008A9668 /* NoDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2041F471EBA219C008A9668 /* NoDataView.swift */; };
+		B2041F4A1EBB06AB008A9668 /* SwiftHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2041F491EBB06AB008A9668 /* SwiftHUD.swift */; };
 		B223D5671D967C3C00D6F12F /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B223D5601D967C3C00D6F12F /* Config.swift */; };
 		B223D5691D967C3C00D6F12F /* MapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B223D5621D967C3C00D6F12F /* MapsViewController.swift */; };
 		B223D56A1D967C3C00D6F12F /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B223D5631D967C3C00D6F12F /* NewsViewController.swift */; };
@@ -43,6 +44,7 @@
 		B2041F2F1EB5C619008A9668 /* GeneralModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralModels.swift; sourceTree = "<group>"; };
 		B2041F361EB8D902008A9668 /* UITableView+CFA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+CFA.swift"; sourceTree = "<group>"; };
 		B2041F471EBA219C008A9668 /* NoDataView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoDataView.swift; sourceTree = "<group>"; };
+		B2041F491EBB06AB008A9668 /* SwiftHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftHUD.swift; sourceTree = "<group>"; };
 		B223D5601D967C3C00D6F12F /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		B223D5611D967C3C00D6F12F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B223D5621D967C3C00D6F12F /* MapsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapsViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				B2041F471EBA219C008A9668 /* NoDataView.swift */,
+				B2041F491EBB06AB008A9668 /* SwiftHUD.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 				B223D56D1D967C3C00D6F12F /* VideosViewController.swift in Sources */,
 				B26E166B1D8BA3E8001FE248 /* AppDelegate.swift in Sources */,
 				B223D5671D967C3C00D6F12F /* Config.swift in Sources */,
+				B2041F4A1EBB06AB008A9668 /* SwiftHUD.swift in Sources */,
 				B2F8A0761D96833F00FB4C16 /* APIService.swift in Sources */,
 				B2041F301EB5C619008A9668 /* GeneralModels.swift in Sources */,
 				B2F8A08D1D96D90D00FB4C16 /* Control.swift in Sources */,

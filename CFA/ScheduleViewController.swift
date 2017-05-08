@@ -23,6 +23,13 @@ class ScheduleViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        DispatchQueue.global().asyncAfter(wallDeadline: .now() + 1) { 
+            DispatchQueue.main.async {
+                SwiftHUD(type: .progress(nil)).addTo(self.view).position(.center).addOption(.allowUserInteraction).show()
+            }
+        }
+        
     
         if APIService.default.namespace != nil { return }
         let setupVC = UIStoryboard(.Main).initiate(SetupViewController.self)
