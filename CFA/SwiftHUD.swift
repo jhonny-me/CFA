@@ -77,8 +77,10 @@ extension SwiftHUD {
         let rawValue: Int
         static let allowUserInteraction = Options(rawValue: 1<<0)
         static let removeFromSuperViewWhenHide = Options(rawValue: 1<<1)
+        static let dismissKeyboardWhenShow = Options(rawValue: 1<<2)
+        static let restoreKeyboardWhenHide = Options(rawValue: 1<<3)
         
-        static let `default`: Options = [.removeFromSuperViewWhenHide]
+        static let `default`: Options = [.removeFromSuperViewWhenHide, .dismissKeyboardWhenShow, .restoreKeyboardWhenHide]
     }
 }
 
@@ -91,6 +93,7 @@ class SwiftHUD: UIView {
     fileprivate(set) var options: Options = .default
     
     fileprivate(set) var destinationView: UIView?
+    fileprivate(set) var firstResponderHolder: UIResponder?
     fileprivate(set) var backgroundView: UIView
     fileprivate(set) var bezelView: UIView
     fileprivate(set) var indicatorView: UIView?
@@ -251,6 +254,8 @@ extension SwiftHUD {
         }
         self.setNeedsLayout()
         self.layoutIfNeeded()
+        firstResponderHolder = destinationView.firstResponder()
+        if options.contains(.dismissKeyboardWhenShow) { firstResponderHolder?.resignFirstResponder() }
         // animation
         let bezelSnap = bezelView.snapshotView(afterScreenUpdates: true)
 
@@ -296,6 +301,9 @@ extension SwiftHUD {
             if self.options.contains(.removeFromSuperViewWhenHide) {
                 self.removeFromSuperview()
             }
+            if self.options.contains(.restoreKeyboardWhenHide) {
+                self.firstResponderHolder?.becomeFirstResponder()
+            }
         }
         if animated {
             UIView.animate(withDuration: 0.3, animations: { 
@@ -319,5 +327,18 @@ extension UIView {
     
     func hideAllHUD(animated: Bool = false) {
         hudViews().forEach { $0.hide(animated: animated) }
+    }
+    
+    fileprivate func firstResponder() -> UIResponder? {
+        var firstResponder: UIResponder? = nil
+        if isFirstResponder { return self }
+        else {
+            for view in subviews {
+                if let responder = view.firstResponder() {
+                    firstResponder = responder
+                }
+            }
+        }
+        return firstResponder
     }
 }
