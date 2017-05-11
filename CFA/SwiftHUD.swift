@@ -95,7 +95,9 @@ class SwiftHUD: UIView {
     fileprivate(set) var bezelView: UIView
     fileprivate(set) var indicatorView: UIView?
     fileprivate(set) lazy var messageLabel: UILabel = {
-        return UILabel()
+        let label = UILabel()
+        label.numberOfLines = 3
+        return label
     }()
     
     fileprivate var timer: Timer?
@@ -192,14 +194,19 @@ extension SwiftHUD {
     }
     
     func show() {
+        //
+        guard
+            let destinationView = destinationView,
+            let _ = destinationView.window else { return }
+        
         // check piority
-        if let _ = destinationView?.hudViews().first, queueStyle == .pipe { return }
-        if let previousViews = destinationView?.hudViews(), queueStyle == .stack {
-            previousViews.forEach { $0.hide(animated: false) }
+        if let _ = destinationView.hudViews().first, queueStyle == .pipe { return }
+        if queueStyle == .stack {
+            destinationView.hudViews().forEach { $0.hide(animated: false) }
         }
         /// autolayouts
         removeFromSuperview()
-        destinationView?.addSubview(self)
+        destinationView.addSubview(self)
         addSubview(backgroundView)
         backgroundView.snp.makeConstraints { (maker) in
             maker.edges.equalTo(self)
@@ -218,6 +225,7 @@ extension SwiftHUD {
             case .bottom:
                 maker.bottom.equalTo(backgroundView).offset(-20)
             }
+            maker.width.lessThanOrEqualToSuperview().multipliedBy(0.8)
         }
         
         if let indicatorView = indicatorView {
@@ -256,11 +264,12 @@ extension SwiftHUD {
             case .bottom:
                 maker.bottom.equalTo(backgroundView).offset(-20)
             }
+            maker.width.lessThanOrEqualToSuperview().multipliedBy(0.8)
         }
         
         let container = UIView(frame: CGRect(x: backgroundView.center.x - bezelView.frame.width/2, y: bezelView.frame.minY, width: bezelView.frame.width, height: bezelView.frame.height))
         
-        destinationView?.addSubview(container)
+        destinationView.addSubview(container)
         self.alpha = 0
         DispatchQueue.main.asyncAfter(wallDeadline: .now() + 0.001) {
             UIView.transition(with: container, duration: 0.3, options: self.animationOptions, animations: {
@@ -304,7 +313,7 @@ extension UIView {
         return SwiftHUD.huds(on: self)
     }
     
-    func show(_ type: SwiftHUD.HUDType) {
+    func showHUD(_ type: SwiftHUD.HUDType) {
         SwiftHUD(type: type).addTo(self).show()
     }
     

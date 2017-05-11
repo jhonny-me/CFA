@@ -44,6 +44,11 @@ class VideosViewController: UIViewController {
         
         requestForData()
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        print(view.alpha)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -58,13 +63,17 @@ class VideosViewController: UIViewController {
     }
     
     private func requestForData() {
+        showProgress()
         APIService.default.getAllResources { (result) in
+            self.hideAllHUD()
             result.successCallback({ (resours) in
                 self.resources = resours
                 self.tableView.reloadData()
                 if resours.count == 0 {
                     self.tableView.showNoneDataView()
                 }
+            }).failureCallback({ (error) in
+                self.showToast(error.localizedDescription)
             })
         }
     }
@@ -109,7 +118,7 @@ extension VideosViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: VideosCell.Identifier, for: indexPath) as? VideosCell else { return UITableViewCell() }
-        cell.config(with: resources[indexPath.row])
+        cell.config(with: resources[indexPath.section])
 //        cell.textLabel?.text = "Apple Design Awards"
 //        cell.detailTextLabel?.text = "2016 - Session 104"
         //        cell.backgroundColor = Config.scheduleCellColor

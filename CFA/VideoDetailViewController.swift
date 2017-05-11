@@ -32,10 +32,14 @@ class VideoDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
+        if let video = video {
+            titleTextField.text = video.name
+            descriptionTextField.text = video.description
+        }
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
@@ -64,18 +68,30 @@ class VideoDetailViewController: UIViewController {
             let title = titleTextField.text,
             let url = urlTextField.text else { return }
         if mode == .create {
+            self.showProgress()
             APIService.default.createResource(title: title, url: url, callback: { (result) in
+                self.hideAllHUD()
                 result.failureCallback({ (error) in
-                    dump(error)
+                    self.showToast(error.localizedDescription)
                 }).successCallback({ (resource) in
                     self.video = resource
                     self.mode = .read
+                    self.configAction(.read)
                 })
             })
             return
         }
         guard let resource = video else { return }
         
+    }
+    
+    @IBAction func backAction(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
     }
     
 }

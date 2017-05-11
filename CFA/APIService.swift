@@ -8,7 +8,9 @@
 
 import Foundation
 
-let baseAPIURL = "http://104.199.245.204:3000/api"
+let isStaging = false
+
+let baseAPIURL = isStaging ? "http://192.168.0.103:3000/api" : "http://104.199.245.204:3000/api"
 let registerURL = baseAPIURL + "/managers"
 let loginURL = baseAPIURL + "/managers/login"
 let logoutURL = baseAPIURL + "/managers/logout"
@@ -58,7 +60,7 @@ final class APIService: NSObject {
     enum HTTPMethod: String {
         case GET, POST, DELETE, PUT
     }
-    func baseRequest(method: HTTPMethod = .GET, url: String, param: JSONDictionary = [:], headers: [String: String] = [:], callback: @escaping (Result<JSONDictionary>) -> ()) {
+    func baseRequest(method: HTTPMethod = .GET, url: String, param: JSONDictionary? = nil, headers: [String: String] = [:], callback: @escaping (Result<JSONDictionary>) -> ()) {
         
         guard let url = URL(string: url) else { return callback(.failure(APIError.default)) }
         
@@ -71,7 +73,9 @@ final class APIService: NSObject {
             request.allHTTPHeaderFields?[key] = value
         }
         request.httpShouldHandleCookies = false
-        request.httpBody = try? JSONSerialization.data(withJSONObject: param, options: [])
+        if let param = param {
+            request.httpBody = try? JSONSerialization.data(withJSONObject: param, options: [])
+        }
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error { return callback(.failure(error)) }
@@ -113,7 +117,7 @@ extension APIService {
         ]
         baseRequest(method: .POST, url: loginURL, param: param) { (result) in
             result.successCallback({ (json) in
-                guard let token = json["id"] as? String else { return callback(.failure(APIError.default)) }
+                guard let token = (json["data"] as? JSONDictionary)?["id"] as? String else { return callback(.failure(APIError.default)) }
                 self.token = token
                 callback(.success())
             }).failureCallback({ (error) in
@@ -135,7 +139,9 @@ extension APIService {
     func checkaAvailable(namespace: String, callback: @escaping (Result<Bool>) -> ()) {
         baseRequest(method: .POST, url: namespaceAvailableURL, param: ["title": namespace]) { (result) in
             result.successCallback({ (json) in
-                guard let result = json["result"] as? Bool else { return }
+                guard let result = (json["data"] as? JSONDictionary)?["result"] as? Bool else {
+                    return callback(.failure(APIError.server))
+                }
                 callback(.success(result))
             }).failureCallback({ (err) in
                 callback(.failure(err))

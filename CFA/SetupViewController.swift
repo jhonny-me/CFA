@@ -29,7 +29,9 @@ class SetupViewController: UIViewController {
 
     func checkAvailable() {
         let namespace = domianNameTextField.text!
+        showProgress()
         APIService.default.checkaAvailable(namespace: namespace) { (result) in
+            self.hideAllHUD()
             result.successCallback { result in
                 if result {
                     let register = UIStoryboard(.Main).initiate(LoginViewController.self)
@@ -41,7 +43,7 @@ class SetupViewController: UIViewController {
                     self.dismiss(animated: true, completion: nil)
                 }
             }.failureCallback({ (err) in
-                print(err)
+                self.showToast(err.localizedDescription)
             })
         }
     }
